@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://cxcs2q2o1ulo4"]
 
 [ext_resource type="PackedScene" uid="uid://catoifbqlym3j" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bq7n57ownqh00" path="res://scripts/camera.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b7cw23fx1u6xg" path="res://sprites/wall.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bdvxw1bg00k52" path="res://scenes/machine.tscn" id="4_lbhrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -20,11 +22,31 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 [node name="Main" type="Node" unique_id=1383064159]
 
 [node name="Player" parent="." unique_id=1155049896 instance=ExtResource("1_uwrxv")]
+position = Vector2(-104, 0)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=422027979]
 zoom = Vector2(4, 4)
+script = ExtResource("2_lnu2h")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=892235484]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAP//AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPr/AAAAAAAAAAAIAAUAAAAAAAAAAAAIAPr/AAAAAAAAAAAHAAUAAAAAAAAAAAAHAPr/AAAAAAAAAAAGAAUAAAAAAAAAAAAGAPr/AAAAAAAAAAAFAAUAAAAAAAAAAAAFAPr/AAAAAAAAAAAEAAUAAAAAAAAAAAAEAPr/AAAAAAAAAAADAAUAAAAAAAAAAAADAPr/AAAAAAAAAAACAAUAAAAAAAAAAAACAPr/AAAAAAAAAAABAAUAAAAAAAAAAAABAPr/AAAAAAAAAAAAAAUAAAAAAAAAAAAAAPr/AAAAAAAAAAD//wUAAAAAAAAAAAD///r/AAAAAAAAAAD+/wUAAAAAAAAAAAD+//r/AAAAAAAAAAD9/wUAAAAAAAAAAAD9//r/AAAAAAAAAAD8/wUAAAAAAAAAAAD8//r/AAAAAAAAAAD7/wUAAAAAAAAAAAD7//r/AAAAAAAAAAD6/wUAAAAAAAAAAAD6//r/AAAAAAAAAAD5/wUAAAAAAAAAAAD5//r/AAAAAAAAAAD4/wUAAAAAAAAAAAD4//r/AAAAAAAAAAD3/wUAAAAAAAAAAAD3//r/AAAAAAAAAAD2/wUAAAAAAAAAAAD2/wQAAAAAAAAAAAD2/wMAAAAAAAAAAAD2/wIAAAAAAAAAAAD2/wEAAAAAAAAAAAD2/wAAAAAAAAAAAAD2////AAAAAAAAAAD2//7/AAAAAAAAAAD2//3/AAAAAAAAAAD2//z/AAAAAAAAAAD2//v/AAAAAAAAAAD2//r/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
+
+[node name="Machine" parent="." unique_id=1001928480 instance=ExtResource("4_lbhrr")]
+position = Vector2(72, -32)
+
+[node name="Machine2" parent="." unique_id=569094321 instance=ExtResource("4_lbhrr")]
+position = Vector2(40, -32)
+
+[node name="Machine3" parent="." unique_id=1306739651 instance=ExtResource("4_lbhrr")]
+position = Vector2(8, -32)
+
+[node name="Machine4" parent="." unique_id=759262354 instance=ExtResource("4_lbhrr")]
+position = Vector2(72, 24)
+
+[node name="Machine5" parent="." unique_id=1086309879 instance=ExtResource("4_lbhrr")]
+position = Vector2(40, 24)
+
+[node name="Machine6" parent="." unique_id=562530935 instance=ExtResource("4_lbhrr")]
+position = Vector2(8, 24)

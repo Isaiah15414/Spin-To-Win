@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bdvxw1bg00k52"]
+
+[ext_resource type="Script" uid="uid://brunwo5jhanf3" path="res://scripts/machine.gd" id="1_73k52"]
+[ext_resource type="Texture2D" uid="uid://chxegoog4nd0l" path="res://sprites/machine.png" id="1_a5lir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[node name="Machine" type="StaticBody2D" unique_id=759262354]
+script = ExtResource("1_73k52")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1365125747]
+texture_filter = 1
+texture = ExtResource("1_a5lir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135996206]
+shape = SubResource("RectangleShape2D_g4v7s")

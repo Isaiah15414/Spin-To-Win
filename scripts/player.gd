@@ -1,12 +1,15 @@
 extends CharacterBody2D
+class_name Player
 
-const SPEED = 100.0
+var speed: float = 100.0
 
-func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector("left", "right", "up", "down")
+func _process(delta: float) -> void:
+	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 	if direction:
-		velocity = direction * SPEED
+		velocity = direction * speed
+		$AnimationPlayer.play("walk")
 	else:
 		velocity = Vector2.ZERO
+		$AnimationPlayer.stop()
 
 	move_and_slide()
