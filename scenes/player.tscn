@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://0d7ld38w5ntn" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ce0k6sepqs0uv" path="res://sprites/guy.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://ctdftor1fu1iu" path="res://sprites/icon.svg" id="3_qhqgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0vu5"]
+radius = 7.0
+height = 16.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -13,9 +18,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
@@ -55,17 +57,42 @@ _data = {
 &"walk": SubResource("Animation_qhqgy")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1155049896]
 collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=547747994]
+shape = SubResource("CapsuleShape2D_y0vu5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=265804807]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=547747994]
-shape = SubResource("RectangleShape2D_yf5fn")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2133937507]
 root_node = NodePath("../AnimatedSprite2D")
 libraries/ = SubResource("AnimationLibrary_dqkch")
+
+[node name="PickupRange" type="Area2D" parent="." unique_id=1902618630]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange" unique_id=1247315698]
+texture_filter = 1
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="TargetIndicator" type="Sprite2D" parent="PickupRange" unique_id=1975962293]
+modulate = Color(1, 1, 1, 0.5882353)
+scale = Vector2(0.078125, 0.0703125)
+texture = ExtResource("3_qhqgy")
+
+[node name="CarryMarker" type="Marker2D" parent="." unique_id=1994843180]
+position = Vector2(0, -11)
+
+[connection signal="area_entered" from="PickupRange" to="." method="_on_pickup_range_area_entered"]
+[connection signal="area_exited" from="PickupRange" to="." method="_on_pickup_range_area_exited"]
+[connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]
+[connection signal="body_exited" from="PickupRange" to="." method="_on_pickup_range_body_exited"]

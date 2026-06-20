@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://byx04wjitaakj"]
+
+[ext_resource type="Texture2D" uid="uid://dsseobslplyk" path="res://sprites/laundry.png" id="1_8rs3o"]
+[ext_resource type="Script" uid="uid://47mi0uibcmms" path="res://scripts/laundry.gd" id="1_ndvkb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(16, 8)
+
+[node name="Laundry" type="Area2D" unique_id=1641908976]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ndvkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624927505]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1619302993]
+texture_filter = 1
+texture = ExtResource("1_8rs3o")
